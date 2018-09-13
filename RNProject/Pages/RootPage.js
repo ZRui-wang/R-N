@@ -37,7 +37,7 @@ const TabNavigator = createBottomTabNavigator(
                 tabBarLabel:'读物',
                 tabBarIcon: ({focused,tintColor}) => (
                     <Image
-                        source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                        source={focused ? require('../Images/tab/tab_duwu_on.png') : require('../Images/tab/tab_duwu_off.png')}
                         style={styles.tabBarItem}
                     />
             )
@@ -50,7 +50,7 @@ const TabNavigator = createBottomTabNavigator(
                 tabBarLabel:'购物车',
                 tabBarIcon: ({focused,tintColor}) => (
                     <Image
-                         source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                         source={focused ? require('../Images/tab/tab_cart_on.png') : require('../Images/tab/tab_cart_off.png')}
                          style={styles.tabBarItem}
                     />
             )
@@ -63,7 +63,7 @@ const TabNavigator = createBottomTabNavigator(
                 tabBarLabel:'我的',
                 tabBarIcon: ({focused,tintColor}) => (
                     <Image
-                source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                source={focused ? require('../Images/tab/tab_mine_on.png') : require('../Images/tab/tab_mine_off.png')}
                 style={styles.tabBarItem}
                 />
             )
