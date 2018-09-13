@@ -12,7 +12,8 @@ import Mine from './Mine/Mine';
 import {
     StyleSheet,
     View,
-    Image
+    Image,
+    Text
 } from 'react-native';
 
 const TabNavigator = createBottomTabNavigator(
@@ -69,7 +70,7 @@ const TabNavigator = createBottomTabNavigator(
             )
 
             }
-        }
+        },
     },
 
     {
@@ -132,20 +133,57 @@ const StackNavigator = createStackNavigator(
     {
         headerLayoutPreset:'center',
         navigationOptions:{
-            // headerTitleStyle:{
-            // 	flex:1,
-            // 	textAlign:'center',
-            // 	alignSelf:'center'
-            // },
-            // headerBackImage:(
-            //     <Image
-            //         source={require('../resource/nav/nav_back_gray.png')}
-            //         style={{width:44,height:44,marginLeft:15}}
-            //     />
-            // ),
+            headerTitleStyle:{
+            	flex:1,
+            	textAlign:'center',
+            	alignSelf:'center'
+            },
+            headerBackImage:(
+                <Image
+                    source={require('../Images/tab/nav_back_grey.png')}
+                    style={{width:44,height:44,marginLeft:15}}
+                />
+            ),
         }
     }
 );
+
+TabNavigator.navigationOptions = ({navigation}) => {
+    const {routeName} = navigation.state.routes[navigation.state.index];
+    let headerTitle = null;
+    let headerLeft = null;
+    let headerRight = null;
+    switch (routeName){
+        case 'Home':{
+            headerTitle = (
+                <Text style={{color:'#c0c0c0'}}> 请输入要搜索的内容 </Text>
+            )
+
+            break;
+        }
+
+        case 'Discovery':{
+            headerTitle = '毒物';
+            break;
+        }
+
+        case 'Cart':{
+            headerTitle = '购物车';
+            break;
+        }
+
+        case 'Mine':{
+            headerTitle = '我的';
+            break;
+        }
+    }
+
+    return {
+        headerTitle: headerTitle,
+        headerLeft: headerLeft,
+        headerRight: headerRight,
+    }
+}
 
 
 

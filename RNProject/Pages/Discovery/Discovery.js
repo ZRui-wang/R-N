@@ -11,6 +11,10 @@ import {
 } from 'react-native';
 
 export default class DiscoveryScreen extends Component {
+    static navigationOptions = {
+        headerTitle:'毒物',
+    };
+
     render() {
         return (
             <View >
