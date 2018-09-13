@@ -4,18 +4,18 @@
   * date： 
   */
 import React, {Component} from 'react';
-import {TabNavigator, StackNavigator} from 'react-navigation'
-import {Home} from './Pages/Home';
-import {Discovery} from './pages/Discovery';
-import {Cart} from './pages/Cart';
-import {Mine} from './pages/Mine';
+import {createBottomTabNavigator, createStackNavigator} from 'react-navigation'
+import Home from './Home/Home';
+import Discovery from './Discovery/Discovery';
+import Cart from './Cart/Cart';
+import Mine from './Mine/Mine';
 import {
     StyleSheet,
     View,
     Image
 } from 'react-native';
 
-export const TabNav = TabNavigator(
+const TabNavigator = createBottomTabNavigator(
     {
         Home: {
             screen:Home,
@@ -24,6 +24,7 @@ export const TabNav = TabNavigator(
                 tabBarIcon: ({focused,tintColor}) => (
                     <Image
                         source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                        style={styles.tabBarItem}
                     />
                 )
 
@@ -32,35 +33,38 @@ export const TabNav = TabNavigator(
 
         Discovery: {
             screen:Discovery,
-                navigationOptions:{
+            navigationOptions:{
                 tabBarLabel:'读物',
-                    tabBarIcon: ({focused,tintColor}) => (
+                tabBarIcon: ({focused,tintColor}) => (
                     <Image
-                source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
-                />
+                        source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                        style={styles.tabBarItem}
+                    />
             )
 
             }
         },
         Cart: {
             screen:Cart,
-                navigationOptions:{
+            navigationOptions:{
                 tabBarLabel:'购物车',
-                    tabBarIcon: ({focused,tintColor}) => (
+                tabBarIcon: ({focused,tintColor}) => (
                     <Image
-                source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
-                />
+                         source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                         style={styles.tabBarItem}
+                    />
             )
 
             }
         },
         Mine: {
             screen:Mine,
-                navigationOptions:{
+            navigationOptions:{
                 tabBarLabel:'我的',
-                    tabBarIcon: ({focused,tintColor}) => (
+                tabBarIcon: ({focused,tintColor}) => (
                     <Image
                 source={focused ? require('../Images/tab/tab_home_on.png') : require('../Images/tab/tab_home_off.png')}
+                style={styles.tabBarItem}
                 />
             )
 
@@ -71,7 +75,7 @@ export const TabNav = TabNavigator(
     {
         tabBarOptions:{
             // 当前选中的 tab bar 的文本颜色和图标颜色
-            activeTintColor:'#4BC1D2',
+            activeTintColor:'#81C31F',
             // 当前未选中的 tab bar 的文本颜色和图标颜色
             inactiveTintColor: '#000',
             // 是否显示tab bar的图标， 默认是false
@@ -113,24 +117,44 @@ export const TabNav = TabNavigator(
     }
 );
 
-export default class  extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {}
+const StackNavigator = createStackNavigator(
+    {
+        Tab: {
+            screen: TabNavigator,
+        },
+        // Search:{
+        //     screen:SearchScreen,
+        // },
+        // Category:{
+        //     screen:CategoryScreen,
+        // }
+    },
+    {
+        headerLayoutPreset:'center',
+        navigationOptions:{
+            // headerTitleStyle:{
+            // 	flex:1,
+            // 	textAlign:'center',
+            // 	alignSelf:'center'
+            // },
+            // headerBackImage:(
+            //     <Image
+            //         source={require('../resource/nav/nav_back_gray.png')}
+            //         style={{width:44,height:44,marginLeft:15}}
+            //     />
+            // ),
+        }
     }
-
-    static propTypes = {}
-
-    render() {
-        return (
-            < View >
+);
 
 
-            < /View>
-    )
-        ;
-    }
-}
 
-const styles = StyleSheet.create({});
+export default StackNavigator;
+
+
+const styles = StyleSheet.create({
+    tabBarItem: {
+        width: 20,
+        height: 20,
+    },
+});

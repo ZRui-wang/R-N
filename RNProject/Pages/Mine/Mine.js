@@ -7,15 +7,16 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
+    Text,
 } from 'react-native';
 
-export default class  extends Component {
+export default class MineScreen extends Component {
     render() {
         return (
-            < View >
+            <View >
+                <Text> 这是我的界面 </Text>
 
-
-            < /View>
+            </View>
     )
         ;
     }
