@@ -13,7 +13,8 @@ import {
     StyleSheet,
     View,
     Image,
-    Text
+    Text,
+    Dimensions
 } from 'react-native';
 
 const TabNavigator = createBottomTabNavigator(
@@ -156,7 +157,10 @@ TabNavigator.navigationOptions = ({navigation}) => {
     switch (routeName){
         case 'Home':{
             headerTitle = (
-                <Text style={{color:'#c0c0c0'}}> 请输入要搜索的内容 </Text>
+                <View style={styles.search}>
+                    <Image source={require('../Images/tab/nav_search.png')} style={{width:15,height:15}}/>
+                    <Text style={{color:'#c0c0c0'}}>请输入要搜索的内容 </Text>
+                </View>
             )
 
             break;
@@ -195,4 +199,12 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
     },
+    search: {
+        flexDirection:'row',
+        backgroundColor:'black',
+        width:Dimensions.get('window').width,
+        height:40,
+        alignItems:'center',
+        justifyContent:'center',
+    }
 });
